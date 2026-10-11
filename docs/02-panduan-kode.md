@@ -303,8 +303,8 @@ Subbab 4.3 tahap 5 dan Gambar 4.6.
 | 46–61 | Kueri aset → organisasi → sektor dan aset → CVE (status *exposure*) |
 | 63–85 | Untuk CVE yang terkait aset: CWE, skor CVSS, tanggal KEV |
 | 87–111 | Laporan yang menyebut CVE, aktor/*malware* yang menargetkan CVE menurut laporan itu, dan sektor yang disebut laporan. Setiap sisi yang berasal dari laporan diberi tanggal terbit laporan. |
-| 113–118 | Menghapus sisi ganda |
-| 119–121 | Menyisipkan data ke `pipeline/visualisasi-template.html` |
+| 113–118 | Menghapus sisi ganda dan mengurutkan sisi agar keluaran tetap |
+| 119–123 | Menyisipkan data ke `pipeline/visualisasi-template.html` |
 
 Di halaman HTML, pilihan **Waktu keputusan** menyembunyikan sisi dengan tanggal di luar
 jendela [t − W, t], dan sisi KEV dengan tanggal sesudah t. Logika ini sama dengan kueri
