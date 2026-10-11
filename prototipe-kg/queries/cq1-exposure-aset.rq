@@ -1,0 +1,23 @@
+# CQ1. CVE apa yang memengaruhi aset organisasi, dengan status TRUE/FALSE/UNKNOWN
+#      dan dasar pencocokannya?
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterm: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cve: <http://w3id.org/sepses/vocab/ref/cve#>
+PREFIX cvss: <http://w3id.org/sepses/vocab/ref/cvss#>
+PREFIX cat: <http://w3id.org/sepses/vocab/ref/attack#>
+PREFIX ext: <http://example.org/jejak-vp/ext#>
+PREFIX g: <http://example.org/jejak-vp/graph/>
+
+SELECT ?aset ?produk ?versi ?cve ?status ?dasar
+WHERE {
+  GRAPH g:assets {
+    ?a a ext:Asset ; rdfs:label ?aset ; ext:product ?produk ; ext:installedVersion ?versi .
+  }
+  GRAPH g:derived-exposure {
+    ?e ext:assessedAsset ?a ; ext:assessedCVE ?c ; ext:exposureStatus ?status ; ext:matchBasis ?dasar .
+  }
+  GRAPH g:cve-sepses { ?c dcterm:identifier ?cve . }
+}
+ORDER BY ?aset ?cve

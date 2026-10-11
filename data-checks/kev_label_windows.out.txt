@@ -1,0 +1,14 @@
+KEV ransomware flag among CTI CVEs in KEV: {'Known': 84, 'Unknown': 120}
+t0=2025-04-30 window= 90d candidates=  3 positives= 0
+t0=2025-04-30 window=180d candidates=  3 positives= 0
+t0=2025-04-30 window=365d candidates=  3 positives= 0
+t0=2025-06-30 window= 90d candidates= 19 positives= 1
+t0=2025-06-30 window=180d candidates= 19 positives= 1
+t0=2025-06-30 window=365d candidates= 19 positives= 5
+t0=2025-08-31 window= 90d candidates= 52 positives= 1
+t0=2025-08-31 window=180d candidates= 52 positives= 3
+t0=2025-08-31 window=365d candidates= 52 positives= 6  (window extends past KEV snapshot 2026-08-27: censored)
+t0=2025-10-31 window= 90d candidates=114 positives= 2
+t0=2025-10-31 window=180d candidates=114 positives= 8
+t0=2025-10-31 window=365d candidates=114 positives= 8  (window extends past KEV snapshot 2026-08-27: censored)
+KEV additions per year (catalog 2026-08-27): [('2022', 555), ('2023', 187), ('2024', 186), ('2025', 245), ('2026', 201)]

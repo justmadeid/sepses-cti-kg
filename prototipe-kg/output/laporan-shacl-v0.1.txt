@@ -1,0 +1,5 @@
+Triple divalidasi (tanpa T-box): 4496
+Conforms (tanpa Violation): True
+Ringkasan hasil:
+  [Warning] x9: CVE disebut laporan OpenCTI tetapi tidak punya rekaman CVE (CVSS/CWE/produk tidak diketahui; CQ1-CQ2 tidak lengkap).
+      fokus: CVE-2007-0671, CVE-2013-3893, CVE-2020-25078, CVE-2020-25079, CVE-2022-40799, CVE-2023-36884, CVE-2024-26009, CVE-2024-8068, CVE-2024-8069

@@ -1,0 +1,155 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterm: <http://purl.org/dc/terms/> .
+@prefix prov:   <http://www.w3.org/ns/prov#> .
+@prefix cve:    <http://w3id.org/sepses/vocab/ref/cve#> .
+@prefix cvss:   <http://w3id.org/sepses/vocab/ref/cvss#> .
+@prefix cwe:    <http://w3id.org/sepses/vocab/ref/cwe#> .
+@prefix cat:    <http://w3id.org/sepses/vocab/ref/attack#> .
+@prefix ext:    <http://example.org/jejak-vp/ext#> .
+
+# =============================================================================
+# T-box prototipe KG v0.1 (JEJAK-VP)
+#
+# Prinsip:
+#   1. Pakai ulang kosakata SEPSES apa adanya (cve:, cvss:, cwe:) dan pola
+#      ICS-SEC KG untuk STIX (cat:, kelas = attack#{type STIX}, relasi STIX
+#      sebagai resource dengan cat:hasSourceRef/hasTargetRef/relationshipType).
+#   2. Istilah baru hanya dibuat bila dibutuhkan CQ dan belum ada di SEPSES;
+#      semuanya memakai prefiks ext: (namespace sementara, belum final).
+#   3. Provenance per laporan memakai NAMED GRAPH: setiap laporan OpenCTI
+#      punya graf sendiri yang IRI-nya sama dengan IRI laporan. Pilihan ini
+#      sementara untuk v0.1; alternatifnya RDF-star (keputusan K3).
+#
+# Setiap istilah ext: mencatat CQ yang membutuhkannya (rdfs:comment "CQx").
+# =============================================================================
+
+<http://example.org/jejak-vp/ext> a owl:Ontology ;
+    dcterm:title "Perluasan SEPSES untuk CTI operasional bertanggal (prototipe)"@id ;
+    owl:versionInfo "0.1" ;
+    dcterm:created "2026-10-11"^^xsd:date ;
+    rdfs:comment "Ontologi aplikasi minimal untuk menjawab CQ1-CQ7 pada sampel kecil (istilah indicator untuk CQ3b sudah dirancang, belum dipetakan). Bukan versi final."@id .
+
+# -----------------------------------------------------------------------------
+# A. Istilah SEPSES/ICS-SEC yang dipakai ulang (dideklarasikan ulang di sini
+#    hanya agar alat seperti Protege/WebVOWL dapat menampilkannya).
+# -----------------------------------------------------------------------------
+cve:CVE a owl:Class ; rdfs:label "CVE" ; rdfs:isDefinedBy <http://w3id.org/sepses/vocab/ref/cve> .
+cve:hasCWE a owl:ObjectProperty ; rdfs:domain cve:CVE ; rdfs:range cwe:CWE .
+cve:hasCVSS3BaseMetric a owl:ObjectProperty ; rdfs:domain cve:CVE ; rdfs:range cvss:CVSS3BaseMetric .
+cwe:CWE a owl:Class ; rdfs:label "CWE" .
+cvss:CVSS3BaseMetric a owl:Class ; rdfs:label "CVSS v3 base metric" .
+cvss:baseScore a owl:DatatypeProperty .
+cvss:baseSeverity a owl:DatatypeProperty .
+cvss:vectorString a owl:DatatypeProperty .
+
+cat:intrusion-set a owl:Class ; rdfs:label "Intrusion set (aktor ancaman)"@id .
+cat:malware a owl:Class ; rdfs:label "Malware" .
+cat:attack-pattern a owl:Class ; rdfs:label "Attack pattern (teknik ATT&CK)"@id .
+cat:identity a owl:Class ; rdfs:label "Identity (STIX)" .
+cat:indicator a owl:Class ; rdfs:label "Indicator (pola IOC)"@id ;
+    rdfs:comment "CQ3b, CQ5. Keputusan lingkup K14 (opsi B): dimodelkan tanpa observable. Dirancang di v0.1, baru dipetakan pada v0.2."@id .
+cat:relationship a owl:Class ; rdfs:label "Relasi STIX sebagai resource"@id .
+cat:hasSourceRef a owl:ObjectProperty ; rdfs:domain cat:relationship .
+cat:hasTargetRef a owl:ObjectProperty ; rdfs:domain cat:relationship .
+cat:relationshipType a owl:DatatypeProperty ; rdfs:domain cat:relationship .
+
+# -----------------------------------------------------------------------------
+# B. Perluasan: laporan CTI dan konteks korban (CQ3, CQ4, CQ5, CQ6)
+# -----------------------------------------------------------------------------
+ext:Report a owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Laporan CTI"@id ;
+    rdfs:comment "CQ4-CQ6. Laporan STIX (report) dari OpenCTI. IRI laporan sekaligus menjadi nama graf yang memuat isi laporan tersebut."@id .
+
+ext:Sector a owl:Class ;
+    rdfs:subClassOf cat:identity ;
+    rdfs:label "Sektor"@id ;
+    rdfs:comment "CQ4. STIX identity dengan identity_class = class (OpenCTI: Sector)."@id .
+
+ext:Country a owl:Class ;
+    rdfs:label "Negara"@id ;
+    rdfs:comment "CQ4. STIX location dengan x_opencti_location_type = Country."@id .
+
+ext:mentions a owl:ObjectProperty ;
+    rdfs:domain ext:Report ;
+    rdfs:label "menyebut"@id ;
+    rdfs:comment "CQ4, CQ6. Isi object_refs laporan. Disimpan di dalam graf laporan itu sendiri, sehingga relevansi sektor/negara dibaca per laporan (bukan transitif)."@id .
+
+ext:published a owl:DatatypeProperty ;
+    rdfs:domain ext:Report ; rdfs:range xsd:dateTime ;
+    rdfs:label "tanggal terbit"@id ;
+    rdfs:comment "CQ5, CQ6. Waktu bukti. Atribut created/modified pada relasi STIX OpenCTI adalah waktu impor (2026), bukan waktu kejadian, sehingga tidak dipakai."@id .
+
+ext:sourceUrl a owl:DatatypeProperty ;
+    rdfs:domain ext:Report ;
+    rdfs:comment "CQ6. URL artikel sumber dan pulse OTX."@id .
+
+ext:stixId a owl:DatatypeProperty ;
+    rdfs:comment "Identitas STIX asli, untuk keterlacakan ke OpenCTI."@id .
+
+# Pembuat laporan: prov:wasAttributedTo -> prov:Agent (dipakai ulang dari PROV-O).
+
+ext:validFrom a owl:DatatypeProperty ; rdfs:domain cat:indicator ; rdfs:range xsd:dateTime ;
+    rdfs:comment "CQ3b. valid_from STIX. Dipetakan mulai v0.2."@id .
+ext:validUntil a owl:DatatypeProperty ; rdfs:domain cat:indicator ; rdfs:range xsd:dateTime ;
+    rdfs:comment "CQ3b, CQ5. valid_until STIX; indikator berlaku pada t bila validFrom <= t < validUntil. Dipetakan mulai v0.2."@id .
+ext:revoked a owl:DatatypeProperty ; rdfs:range xsd:boolean ;
+    rdfs:comment "CQ3b, CQ5. Status revoked STIX. Dipetakan mulai v0.2."@id .
+
+# -----------------------------------------------------------------------------
+# C. Perluasan: status KEV bertanggal (CQ7)
+# -----------------------------------------------------------------------------
+ext:kevDateAdded a owl:DatatypeProperty ;
+    rdfs:domain cve:CVE ; rdfs:range xsd:date ;
+    rdfs:label "tanggal masuk KEV"@id ;
+    rdfs:comment "CQ7. Dari katalog CISA KEV. CVE berstatus KEV pada waktu t bila kevDateAdded <= t."@id .
+
+ext:kevRansomwareUse a owl:DatatypeProperty ; rdfs:domain cve:CVE ;
+    rdfs:comment "CQ7. knownRansomwareCampaignUse (Known/Unknown)."@id .
+
+ext:cvssV4BaseScore a owl:DatatypeProperty ; rdfs:domain cve:CVE ;
+    rdfs:comment "CQ2. Celah kosakata: SEPSES belum punya kelas metrik CVSS v4.0, padahal CVE-2025-8088 hanya punya CVSS v4.0. Dicatat sebagai literal sementara."@id .
+
+# -----------------------------------------------------------------------------
+# D. Perluasan: produk terdampak dan exposure aset (CQ1)
+# -----------------------------------------------------------------------------
+ext:AffectedProduct a owl:Class ;
+    rdfs:label "Produk terdampak"@id ;
+    rdfs:comment "CQ1. Satu entri affected pada rekaman CVE List v5 (vendor, produk, rentang versi). Dipakai bila CVE tidak punya CPE eksplisit."@id .
+ext:hasAffectedProduct a owl:ObjectProperty ; rdfs:domain cve:CVE ; rdfs:range ext:AffectedProduct .
+ext:hasVersionRange a owl:ObjectProperty ; rdfs:domain ext:AffectedProduct ;
+    rdfs:comment "CQ1. Satu entri versions pada rekaman CVE (rentang atau versi tunggal)."@id .
+ext:status a owl:DatatypeProperty ; rdfs:comment "Status entri versi: affected/unaffected/unknown."@id .
+ext:vendor a owl:DatatypeProperty .
+ext:product a owl:DatatypeProperty .
+ext:versionStart a owl:DatatypeProperty .
+ext:versionEndIncluding a owl:DatatypeProperty .
+ext:versionEndExcluding a owl:DatatypeProperty .
+ext:versionExact a owl:DatatypeProperty .
+ext:defaultStatus a owl:DatatypeProperty ;
+    rdfs:comment "CQ1. Status untuk versi di luar daftar: affected/unaffected/unknown."@id .
+ext:cpe23 a owl:DatatypeProperty ; rdfs:comment "CPE 2.3 eksplisit bila tersedia."@id .
+
+ext:Organization a owl:Class ; rdfs:subClassOf prov:Agent ;
+    rdfs:comment "CQ4. Organisasi pengguna (skenario), dengan sektor dan negara."@id .
+ext:inSector a owl:ObjectProperty ; rdfs:domain ext:Organization ; rdfs:range ext:Sector .
+ext:inCountry a owl:ObjectProperty ; rdfs:domain ext:Organization ; rdfs:range ext:Country .
+
+ext:Asset a owl:Class ;
+    rdfs:label "Aset"@id ;
+    rdfs:comment "CQ1. Perangkat lunak terpasang pada aset organisasi (inventaris skenario)."@id .
+ext:ownedBy a owl:ObjectProperty ; rdfs:domain ext:Asset ; rdfs:range ext:Organization .
+ext:installedVersion a owl:DatatypeProperty ; rdfs:domain ext:Asset .
+
+ext:ExposureAssessment a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "Penilaian exposure"@id ;
+    rdfs:comment "CQ1. Hasil pencocokan aset-CVE dengan status TRUE/FALSE/UNKNOWN (logika tiga nilai Kleene) dan dasar pencocokannya."@id .
+ext:assessedAsset a owl:ObjectProperty ; rdfs:domain ext:ExposureAssessment ; rdfs:range ext:Asset .
+ext:assessedCVE a owl:ObjectProperty ; rdfs:domain ext:ExposureAssessment ; rdfs:range cve:CVE .
+ext:exposureStatus a owl:DatatypeProperty ; rdfs:domain ext:ExposureAssessment ;
+    rdfs:comment "TRUE, FALSE, atau UNKNOWN."@id .
+ext:matchBasis a owl:DatatypeProperty ; rdfs:domain ext:ExposureAssessment ;
+    rdfs:comment "Penjelasan aturan yang menghasilkan status (mis. rentang versi, versi tunggal, defaultStatus)."@id .

@@ -1,0 +1,81 @@
+
+===== CVE-2025-64446
+ CVE record: {'published': '2025-11-14', 'affected': [('Fortinet', 'FortiWeb', [('8.0.0', '8.0.1', 'affected'), ('7.6.0', '7.6.4', 'affected'), ('7.4.0', '7.4.9', 'affected')], 'unaffected')], 'cvss': [('cvssV3_1', 9.4, 'CRITICAL')], 'cwe': ['CWE-23'], 'explicit_cpe': 41}
+ KEV: ('2025-11-14', 'Fortinet', 'FortiWeb', 'Unknown')
+  T1547.001 (attack-pattern) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  T1059.007 (attack-pattern) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  VIPERTUNNEL (malware) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  RomCom (intrusion-set) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  T1112 (attack-pattern) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  T1189 (attack-pattern) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  T1053.005 (attack-pattern) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  Mythic Agent (malware) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  T1071.001 (attack-pattern) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  FAKEUPDATE (malware) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  T1574.001 (attack-pattern) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  SocGholish (malware) -targets-> CVE-2025-64446 | reports: 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent ' by AlienVault
+  report 2025-11-25 'Russian RomCom Utilizing SocGholish to Deliver Mythic Agent to U.S. Co': sectors ['Engineering'] | locations ['Ukraine', 'United States of America']
+
+===== CVE-2025-8088
+ CVE record: {'published': '2025-08-08', 'affected': [('win.rar GmbH', 'WinRAR', [('0', '7.12', 'affected')], 'unknown')], 'cvss': [('cvssV4_0', 8.4, 'HIGH')], 'cwe': ['CWE-35'], 'explicit_cpe': 0}
+ KEV: ('2025-08-12', 'RARLAB', 'WinRAR', 'Known')
+  T1204 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-08-25 'WinRAR Directory Traversal & NTFS ADS Vulnerabilities (CVE-2' by AlienVault; 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1547.001 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-08-25 'WinRAR Directory Traversal & NTFS ADS Vulnerabilities (CVE-2' by AlienVault; 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1564.004 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-08-25 'WinRAR Directory Traversal & NTFS ADS Vulnerabilities (CVE-2' by AlienVault
+  SnipBot (malware) -targets-> CVE-2025-8088 | reports: 2025-08-11 'Update WinRAR tools now: RomCom and others exploiting zero-d' by AlienVault; 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1027 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-08-25 'WinRAR Directory Traversal & NTFS ADS Vulnerabilities (CVE-2' by AlienVault; 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  RomCom (intrusion-set) -targets-> CVE-2025-8088 | reports: 2025-08-11 'Update WinRAR tools now: RomCom and others exploiting zero-d' by AlienVault; 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  RomCom, Paper Werewolf (intrusion-set) -targets-> CVE-2025-8088 | reports: 2025-08-25 'WinRAR Directory Traversal & NTFS ADS Vulnerabilities (CVE-2' by AlienVault
+  Mythic (malware) -targets-> CVE-2025-8088 | reports: 2025-08-11 'Update WinRAR tools now: RomCom and others exploiting zero-d' by AlienVault
+  RustyClaw (malware) -targets-> CVE-2025-8088 | reports: 2025-08-11 'Update WinRAR tools now: RomCom and others exploiting zero-d' by AlienVault; 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1059 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-08-25 'WinRAR Directory Traversal & NTFS ADS Vulnerabilities (CVE-2' by AlienVault; 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  Romcom.49869.SL (malware) -targets-> CVE-2025-8088 | reports: 2025-08-25 'WinRAR Directory Traversal & NTFS ADS Vulnerabilities (CVE-2' by AlienVault
+  T1203 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1569 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1210 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1055 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault; 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1190 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1588.005 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1574 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  Mythic C2 agent (malware) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1078 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1047 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault; 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  T1588.002 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1105 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault; 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  T1204.002 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault; 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  T1068 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1588.006 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-09-15 'August Vulnerabilities of Note' by AlienVault
+  T1553.002 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1082 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  T1140 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault; 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1016 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  T1102.002 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1574.002 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1033 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  ShadowPad - S0596 (malware) -targets-> CVE-2025-8088 | reports: 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1204.001 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  T1573.001 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault; 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1071.001 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  Snappybee (malware) -targets-> CVE-2025-8088 | reports: 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1070.004 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1132.001 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  C# backdoor (malware) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  POISONPLUG.SHADOW (malware) -targets-> CVE-2025-8088 | reports: 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1057 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  T1083 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  T1059.003 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault; 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  Bitter (intrusion-set) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  T1012 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  Earth Estries (intrusion-set) -targets-> CVE-2025-8088 | reports: 2025-10-28 'Earth Entries alive and kicking' by AlienVault
+  T1053 (attack-pattern) -targets-> CVE-2025-8088 | reports: 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor' by AlienVault
+  report 2025-08-25 'WinRAR Directory Traversal & NTFS ADS Vulnerabilities (CVE-2025-6218 &': sectors ['Aerospace', 'Defense'] | locations ['Russian Federation']
+  report 2025-08-11 'Update WinRAR tools now: RomCom and others exploiting zero-day vulnera': sectors ['Defense', 'Finance', 'Logistics', 'Manufacturing'] | locations []
+  report 2025-09-15 'August Vulnerabilities of Note': sectors ['Technology', 'Telecommunications'] | locations ['Australia', 'British Indian Ocean Territory', 'Canada', 'Germany', 'India', 'Kenya']
+  report 2025-10-23 'Bitter (APT-Q-37) uses diverse means to deliver new backdoor component': sectors ['Defense', 'Energy', 'Government'] | locations ['China', 'Pakistan']
+
+===== Lazarus aliases and external ids
+  Lazarus | aliases [] | ext []
+  Lazarus Group | aliases [] | ext []
+  Lazarus Group (Famous Chollima division) | aliases [] | ext []
+  Lazarus Group, Kimsuky | aliases [] | ext []
+  APT-C-26 (Lazarus) | aliases [] | ext []

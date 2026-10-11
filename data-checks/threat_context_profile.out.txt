@@ -1,0 +1,37 @@
+== relationship patterns (top 25)
+321204 ('indicator', 'indicates', 'attack-pattern')
+47495 ('indicator', 'indicates', 'malware')
+19700 ('indicator', 'based-on', 'domain-name')
+17857 ('malware', 'uses', 'attack-pattern')
+13644 ('indicator', 'indicates', 'intrusion-set')
+10219 ('indicator', 'based-on', 'file')
+6562 ('attack-pattern', 'targets', 'vulnerability')
+5912 ('intrusion-set', 'uses', 'attack-pattern')
+2668 ('malware', 'targets', 'location')
+2606 ('indicator', 'based-on', 'hostname')
+2053 ('indicator', 'based-on', 'url')
+2022 ('malware', 'targets', 'identity')
+1357 ('malware', 'targets', 'vulnerability')
+999 ('intrusion-set', 'uses', 'malware')
+803 ('intrusion-set', 'targets', 'location')
+704 ('intrusion-set', 'targets', 'identity')
+406 ('indicator', 'based-on', 'email-addr')
+362 ('intrusion-set', 'targets', 'vulnerability')
+12 ('indicator', 'based-on', 'cryptocurrency-wallet')
+
+== direct threat context on CVEs (relationship-level)
+intrusion-set 272 / 352
+malware 330 / 352
+attack-pattern 328 / 352
+
+== report co-occurrence context on CVEs
+intrusion-set 272 / 352
+malware 330 / 352
+attack-pattern 328 / 352
+
+== targets relationships 14478 [('vulnerability', 8281), ('location', 3471), ('identity', 2726)]
+identity_class Counter({'class': 62, 'organization': 1})
+
+== first CTI report minus KEV dateAdded (days), n= 204
+median 379.0 p10 -4 p90 1391
+CVE years [('2025', 142), ('2024', 67), ('2023', 42), ('2021', 27), ('2022', 19), ('2020', 17), ('2017', 11), ('2019', 7), ('2018', 6), ('2013', 4), ('2014', 3), ('2015', 2)]

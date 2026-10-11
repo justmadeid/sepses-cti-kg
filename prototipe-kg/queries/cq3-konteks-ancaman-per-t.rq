@@ -1,0 +1,26 @@
+# CQ3 + CQ5 (versi SAH-WAKTU). Aktor/malware mana yang menargetkan CVE ini menurut
+#      laporan yang SUDAH terbit pada waktu keputusan t dan masih di dalam jendela
+#      kebaruan W (tMulai = t - W)? Ganti baris VALUES untuk skenario lain.
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterm: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cve: <http://w3id.org/sepses/vocab/ref/cve#>
+PREFIX cvss: <http://w3id.org/sepses/vocab/ref/cvss#>
+PREFIX cat: <http://w3id.org/sepses/vocab/ref/attack#>
+PREFIX ext: <http://example.org/jejak-vp/ext#>
+PREFIX g: <http://example.org/jejak-vp/graph/>
+
+SELECT ?cve ?jenis ?nama (COUNT(DISTINCT ?lap) AS ?jumlah_laporan) (SUBSTR(STR(MAX(?terbit)), 1, 10) AS ?laporan_terbaru)
+WHERE {
+  VALUES (?cve ?t ?tMulai) { ("CVE-2025-8088" "2025-09-30T23:59:59Z"^^xsd:dateTime "2025-04-03T00:00:00Z"^^xsd:dateTime) }
+  GRAPH g:cve-sepses { ?c dcterm:identifier ?cve . }
+  GRAPH ?lap { ?r cat:hasTargetRef ?c ; cat:relationshipType "targets" ; cat:hasSourceRef ?x . }
+  GRAPH g:report-metadata { ?lap ext:published ?terbit . }
+  FILTER(?terbit <= ?t && ?terbit >= ?tMulai)
+  GRAPH g:opencti-entities { ?x a ?kelas ; rdfs:label ?nama . }
+  FILTER(?kelas IN (cat:intrusion-set, cat:malware))
+  BIND(STRAFTER(STR(?kelas), "#") AS ?jenis)
+}
+GROUP BY ?cve ?jenis ?nama
+ORDER BY ?jenis ?nama

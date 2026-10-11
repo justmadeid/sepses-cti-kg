@@ -1,0 +1,17 @@
+# Triplestore lokal untuk prototipe KG. Hanya terbuka di 127.0.0.1 (laptop sendiri).
+#   docker compose up -d --build      lalu buka http://localhost:3030
+services:
+  fuseki:
+    build: .
+    image: jejak-vp/fuseki:5.6.0
+    container_name: jejak-fuseki
+    ports:
+      - "127.0.0.1:3030:3030"
+    environment:
+      - JAVA_OPTIONS=-Xmx2g
+    volumes:
+      - ./config.ttl:/fuseki/config.ttl:ro
+      - ./shiro.ini:/fuseki/shiro.ini:ro
+      - fuseki-data:/fuseki/databases
+volumes:
+  fuseki-data:

@@ -1,0 +1,23 @@
+# CQ5. Per waktu keputusan t, laporan mana yang BERLAKU, BELUM TERBIT (bocor dari
+#      masa depan bila dipakai), atau USANG (lebih tua dari jendela W)?
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterm: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cve: <http://w3id.org/sepses/vocab/ref/cve#>
+PREFIX cvss: <http://w3id.org/sepses/vocab/ref/cvss#>
+PREFIX cat: <http://w3id.org/sepses/vocab/ref/attack#>
+PREFIX ext: <http://example.org/jejak-vp/ext#>
+PREFIX g: <http://example.org/jejak-vp/graph/>
+
+SELECT DISTINCT ?cve ?terbit ?laporan ?status_bukti
+WHERE {
+  VALUES (?t ?tMulai) { ("2025-09-30T23:59:59Z"^^xsd:dateTime "2025-04-03T00:00:00Z"^^xsd:dateTime) }
+  GRAPH g:derived-exposure { ?e ext:assessedCVE ?c ; ext:exposureStatus ?st . FILTER(?st != "FALSE") }
+  GRAPH g:cve-sepses { ?c dcterm:identifier ?cve . }
+  GRAPH ?lap { ?lap ext:mentions ?c . }
+  GRAPH g:report-metadata { ?lap ext:published ?terbitWaktu ; dcterm:title ?laporan . }
+  BIND(SUBSTR(STR(?terbitWaktu), 1, 10) AS ?terbit)
+  BIND(IF(?terbitWaktu > ?t, "BELUM TERBIT", IF(?terbitWaktu < ?tMulai, "USANG", "BERLAKU")) AS ?status_bukti)
+}
+ORDER BY ?cve ?terbit

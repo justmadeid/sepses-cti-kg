@@ -1,0 +1,6 @@
+asset_id,label,vendor,product,installed_version,note
+WS-PEMDA-01,Workstation staf keuangan,RARLAB,WinRAR,7.10,versi lama di dalam rentang CVE-2025-8088
+WS-PEMDA-02,Workstation staf umum,RARLAB,WinRAR,7.11,tepat versi yang disebut CVE-2025-6218
+WS-PEMDA-03,Workstation admin,RARLAB,WinRAR,7.13,sudah diperbarui; rekaman CVE tidak menyatakan versi ini aman
+WAF-PEMDA-01,Web application firewall portal layanan,Fortinet,FortiWeb,7.4.5,di dalam rentang 7.4.0-7.4.9
+WAF-PEMDA-02,Web application firewall cadangan,Fortinet,FortiWeb,7.4.10,di luar semua rentang; defaultStatus unaffected

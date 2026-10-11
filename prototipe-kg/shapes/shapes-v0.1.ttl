@@ -1,0 +1,48 @@
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterm: <http://purl.org/dc/terms/> .
+@prefix prov:   <http://www.w3.org/ns/prov#> .
+@prefix cve:    <http://w3id.org/sepses/vocab/ref/cve#> .
+@prefix cat:    <http://w3id.org/sepses/vocab/ref/attack#> .
+@prefix ext:    <http://example.org/jejak-vp/ext#> .
+@prefix shp:    <http://example.org/jejak-vp/shapes#> .
+
+# Shapes SHACL v0.1: syarat minimum agar CQ dapat dijawab dan dapat ditelusuri.
+# Violation = data tidak boleh dipakai; Warning = data boleh dipakai tetapi jawabannya
+# berpotensi tidak lengkap.
+
+shp:ReportShape a sh:NodeShape ;
+    sh:targetClass ext:Report ;
+    sh:property [ sh:path ext:published ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ;
+                  sh:message "Laporan wajib punya tepat satu tanggal terbit (dibutuhkan CQ5)."@id ] ;
+    sh:property [ sh:path prov:wasAttributedTo ; sh:minCount 1 ;
+                  sh:message "Laporan wajib punya pembuat (dibutuhkan CQ6)."@id ] ;
+    sh:property [ sh:path dcterm:title ; sh:minCount 1 ] ;
+    sh:property [ sh:path ext:sourceUrl ; sh:minCount 1 ; sh:severity sh:Warning ;
+                  sh:message "Laporan tanpa URL sumber sulit diverifikasi (CQ6)."@id ] .
+
+shp:RelationshipShape a sh:NodeShape ;
+    sh:targetClass cat:relationship ;
+    sh:property [ sh:path cat:hasSourceRef ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path cat:hasTargetRef ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path cat:relationshipType ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:in ( "targets" "uses" "indicates" "based-on" "related-to" "attributed-to" ) ] .
+
+shp:CVEShape a sh:NodeShape ;
+    sh:targetClass cve:CVE ;
+    sh:property [ sh:path dcterm:identifier ; sh:minCount 1 ; sh:pattern "^CVE-[0-9]{4}-[0-9]{4,}$" ;
+                  sh:severity sh:Warning ;
+                  sh:message "CVE disebut laporan OpenCTI tetapi tidak punya rekaman CVE (CVSS/CWE/produk tidak diketahui; CQ1-CQ2 tidak lengkap)."@id ] .
+
+shp:ExposureShape a sh:NodeShape ;
+    sh:targetClass ext:ExposureAssessment ;
+    sh:property [ sh:path ext:exposureStatus ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "TRUE" "FALSE" "UNKNOWN" ) ] ;
+    sh:property [ sh:path ext:assessedAsset ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ext:Asset ] ;
+    sh:property [ sh:path ext:assessedCVE ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ext:matchBasis ; sh:minCount 1 ;
+                  sh:message "Status exposure wajib disertai dasar pencocokan (dibutuhkan CQ1)."@id ] ;
+    sh:property [ sh:path prov:wasGeneratedBy ; sh:minCount 1 ] .
+
+shp:KEVShape a sh:NodeShape ;
+    sh:targetSubjectsOf ext:kevDateAdded ;
+    sh:property [ sh:path ext:kevDateAdded ; sh:maxCount 1 ; sh:datatype xsd:date ] .

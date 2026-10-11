@@ -1,0 +1,21 @@
+# CQ7. Apakah CVE yang (mungkin) memengaruhi aset berstatus KEV pada waktu t, dan
+#      sejak kapan?
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterm: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cve: <http://w3id.org/sepses/vocab/ref/cve#>
+PREFIX cvss: <http://w3id.org/sepses/vocab/ref/cvss#>
+PREFIX cat: <http://w3id.org/sepses/vocab/ref/attack#>
+PREFIX ext: <http://example.org/jejak-vp/ext#>
+PREFIX g: <http://example.org/jejak-vp/graph/>
+
+SELECT ?cve ?kev_sejak ?status_kev_pada_t ?ransomware
+WHERE {
+  VALUES ?t { "2025-09-30"^^xsd:date }
+  { SELECT DISTINCT ?c WHERE { GRAPH g:derived-exposure { ?e ext:assessedCVE ?c ; ext:exposureStatus ?st . FILTER(?st != "FALSE") } } }
+  GRAPH g:cve-sepses { ?c dcterm:identifier ?cve . }
+  OPTIONAL { GRAPH g:kev { ?c ext:kevDateAdded ?kev_sejak ; ext:kevRansomwareUse ?ransomware . } }
+  BIND(IF(BOUND(?kev_sejak) && ?kev_sejak <= ?t, "KEV", "belum KEV") AS ?status_kev_pada_t)
+}
+ORDER BY ?cve

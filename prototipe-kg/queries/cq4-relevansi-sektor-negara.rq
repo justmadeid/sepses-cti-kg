@@ -1,0 +1,32 @@
+# CQ4. Adakah laporan sah-waktu yang mengaitkan CVE dengan SEKTOR atau NEGARA
+#      organisasi? Relevansi dibaca PER LAPORAN: CVE dan sektor/negara harus disebut
+#      di dalam graf laporan yang sama (bukan lewat rantai relasi transitif).
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterm: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cve: <http://w3id.org/sepses/vocab/ref/cve#>
+PREFIX cvss: <http://w3id.org/sepses/vocab/ref/cvss#>
+PREFIX cat: <http://w3id.org/sepses/vocab/ref/attack#>
+PREFIX ext: <http://example.org/jejak-vp/ext#>
+PREFIX g: <http://example.org/jejak-vp/graph/>
+
+SELECT DISTINCT ?cve ?dimensi ?nilai ?laporan ?terbit ?sah_pada_t
+WHERE {
+  VALUES (?t ?tMulai) { ("2025-09-30T23:59:59Z"^^xsd:dateTime "2025-04-03T00:00:00Z"^^xsd:dateTime) }
+  GRAPH g:assets {
+    ?org a ext:Organization .
+    { ?org ext:inSector ?konteks . BIND("sektor" AS ?dimensi) }
+    UNION
+    { ?org ext:inCountry ?konteks . BIND("negara" AS ?dimensi) }
+  }
+  GRAPH g:derived-exposure { ?e ext:assessedCVE ?c ; ext:exposureStatus ?st . FILTER(?st != "FALSE") }
+  GRAPH ?lap { ?lap ext:mentions ?c , ?konteks . }
+  GRAPH g:report-metadata { ?lap ext:published ?terbitWaktu ; dcterm:title ?laporan . }
+  GRAPH g:cve-sepses { ?c dcterm:identifier ?cve . }
+  OPTIONAL { GRAPH g:opencti-entities { ?konteks rdfs:label ?nilai0 } }
+  BIND(SUBSTR(STR(?terbitWaktu), 1, 10) AS ?terbit)
+  BIND(COALESCE(?nilai0, STRAFTER(STR(?konteks), "resource/")) AS ?nilai)
+  BIND(IF(?terbitWaktu <= ?t && ?terbitWaktu >= ?tMulai, "ya", "tidak") AS ?sah_pada_t)
+}
+ORDER BY ?cve ?terbit

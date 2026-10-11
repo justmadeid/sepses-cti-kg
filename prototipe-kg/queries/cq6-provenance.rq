@@ -1,0 +1,28 @@
+# CQ6. Laporan, pembuat, waktu, dan referensi apa yang mendukung pernyataan
+#      "<aktor> menargetkan <CVE>"?
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterm: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cve: <http://w3id.org/sepses/vocab/ref/cve#>
+PREFIX cvss: <http://w3id.org/sepses/vocab/ref/cvss#>
+PREFIX cat: <http://w3id.org/sepses/vocab/ref/attack#>
+PREFIX ext: <http://example.org/jejak-vp/ext#>
+PREFIX g: <http://example.org/jejak-vp/graph/>
+
+SELECT ?aktor ?cve ?laporan ?terbit ?pembuat (SAMPLE(?otx) AS ?pulse_otx) (GROUP_CONCAT(DISTINCT ?asli; separator=" ") AS ?sumber_asli)
+WHERE {
+  VALUES ?cve { "CVE-2025-8088" }
+  GRAPH g:cve-sepses { ?c dcterm:identifier ?cve . }
+  GRAPH ?lap { ?r cat:hasSourceRef ?x ; cat:relationshipType "targets" ; cat:hasTargetRef ?c . }
+  GRAPH g:opencti-entities { ?x a cat:intrusion-set ; rdfs:label ?aktor . }
+  GRAPH g:report-metadata {
+    ?lap dcterm:title ?laporan ; ext:published ?terbitWaktu ; prov:wasAttributedTo/rdfs:label ?pembuat .
+    # Dua tingkat provenance (K15): pulse OTX = agregator; URL lain = penerbit asli.
+    OPTIONAL { ?lap ext:sourceUrl ?otx . FILTER(CONTAINS(STR(?otx), "otx.alienvault.com")) }
+    OPTIONAL { ?lap ext:sourceUrl ?asli . FILTER(!CONTAINS(STR(?asli), "otx.alienvault.com")) }
+  }
+  BIND(SUBSTR(STR(?terbitWaktu), 1, 10) AS ?terbit)
+}
+GROUP BY ?aktor ?cve ?laporan ?terbit ?pembuat
+ORDER BY ?terbit

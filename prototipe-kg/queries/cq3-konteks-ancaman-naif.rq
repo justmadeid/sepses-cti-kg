@@ -1,0 +1,24 @@
+# CQ3 (versi NAIF, tanpa waktu). Aktor, malware, atau teknik mana yang dinyatakan
+#      menargetkan CVE ini? Semua laporan dipakai, termasuk yang terbit sesudah t.
+#      Dipakai sebagai pembanding (baseline B1 integrasi naif).
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterm: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cve: <http://w3id.org/sepses/vocab/ref/cve#>
+PREFIX cvss: <http://w3id.org/sepses/vocab/ref/cvss#>
+PREFIX cat: <http://w3id.org/sepses/vocab/ref/attack#>
+PREFIX ext: <http://example.org/jejak-vp/ext#>
+PREFIX g: <http://example.org/jejak-vp/graph/>
+
+SELECT ?cve ?jenis ?nama (COUNT(DISTINCT ?lap) AS ?jumlah_laporan)
+WHERE {
+  VALUES ?cve { "CVE-2025-8088" }
+  GRAPH g:cve-sepses { ?c dcterm:identifier ?cve . }
+  GRAPH ?lap { ?r cat:hasTargetRef ?c ; cat:relationshipType "targets" ; cat:hasSourceRef ?x . }
+  GRAPH g:opencti-entities { ?x a ?kelas ; rdfs:label ?nama . }
+  FILTER(?kelas IN (cat:intrusion-set, cat:malware))
+  BIND(STRAFTER(STR(?kelas), "#") AS ?jenis)
+}
+GROUP BY ?cve ?jenis ?nama
+ORDER BY ?jenis ?nama

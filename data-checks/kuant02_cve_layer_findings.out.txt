@@ -1,0 +1,36 @@
+CVE unik yang disebut CTI (D1): 352
+D4 CVE List v5 lokal: 90255 rekaman; tahun direktori: ['2025', '2026']
+D2 seed SEPSES (NVD 1.1): 81152 CVE | D3 dump SEPSES 2019: 126639 CVE
+
+=== A. Cakupan CVE CTI per tahun ID
+  tahun     n   D4   D2   D3 salah satu
+  2007      1    0    0    1          1
+  2009      1    0    0    1          1
+  2010      1    0    0    1          1
+  2013      4    0    0    2          2
+  2014      3    0    0    3          3
+  2015      2    0    0    2          2
+  2016      2    0    0    2          2
+  2017     11    0    0   11         11
+  2018      6    0    0    6          6
+  2019      7    0    0    5          5
+  2020     17    0    0    0          0
+  2021     27    0   27    0         27
+  2022     19    0   18    0         18
+  2023     42    0   40    0         40
+  2024     67    0   10    0         10
+  2025    142  142    0    0        142
+  total   352  142   95   34        271  -> tercakup 271/352 (77.0%)
+  CVE CTI sebelum 2025: 210 | tercakup D2/D3: 129/210 (61.4%)
+
+=== B/C. CVSS dan defaultStatus (rekaman CVE List v5)
+
+  [CVE CTI yang ada di D4] 142 rekaman
+   CVSS: v3 119/142 (83.8%), v4 59/142 (41.5%), v4 saja 22/142 (15.5%), tanpa v3/v4 1/142 (0.7%)
+   defaultStatus pada 435 entri affected: (tidak ada) 270/435 (62.1%), unaffected 95/435 (21.8%), unknown 58/435 (13.3%), affected 12/435 (2.8%)
+   bentuk 1327 entri versi: versi tunggal 729/1327 (54.9%), rentang 598/1327 (45.1%)
+
+  [seluruh D4 (konteks)] 90255 rekaman
+   CVSS: v3 73092/90255 (81.0%), v4 26068/90255 (28.9%), v4 saja 10314/90255 (11.4%), tanpa v3/v4 6849/90255 (7.6%)
+   defaultStatus pada 162346 entri affected: (tidak ada) 76071/162346 (46.9%), unaffected 58527/162346 (36.1%), affected 21077/162346 (13.0%), unknown 6671/162346 (4.1%)
+   bentuk 399037 entri versi: rentang 200754/399037 (50.3%), versi tunggal 198283/399037 (49.7%)

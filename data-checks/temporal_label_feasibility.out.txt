@@ -1,0 +1,17 @@
+month  reports_with_cve  distinct_cves  cve-sector_pairs  cve-location_pairs
+2025-04 11 20 46 40
+2025-05 20 46 154 77
+2025-06 14 23 48 33
+2025-07 22 39 35 26
+2025-08 34 59 171 341
+2025-09 15 51 69 223
+2025-10 23 82 99 80
+2025-11 16 81 181 335
+2025-12 23 83 85 221
+
+CVE seen in N distinct months: [(1, 257), (2, 73), (3, 12), (4, 6), (5, 3), (6, 1)]
+seen<=Jun: 81  seen>Jun: 299  both: 28  new-after-Jun: 271
+
+top sectors [('Technology', 169), ('Government', 165), ('Telecommunications', 92), ('Manufacturing', 67), ('Finance', 65), ('Education', 49), ('Defense', 46), ('Retail', 32), ('Media', 29), ('Transportation', 27), ('Healthcare', 25), ('Energy', 24)]
+top locations [('United States of America', 139), ('Germany', 61), ('Brazil', 60), ('Russian Federation', 51), ('India', 49), ('British Indian Ocean Territory', 49), ('United Kingdom of Great Britain and Northern Ireland', 45), ('New Zealand', 41), ('Australia', 39), ('China', 38), ('Netherlands', 38), ('Canada', 35)]
+Indonesia pairs: 5

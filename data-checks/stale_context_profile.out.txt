@@ -1,0 +1,6 @@
+targets->vulnerability relationships: 8281, revoked: 0, without referencing report: 0
+distinct CVE-threat associations: 8281 Counter({'attack-pattern': 6562, 'malware': 1357, 'intrusion-set': 362})
+t0=2025-09-30 W=90d: future-only(leak if ignored)=3789 stale(>W)=1404 admissible=3088 of 8281
+t0=2025-09-30 W=180d: future-only(leak if ignored)=3789 stale(>W)=12 admissible=4480 of 8281
+t0=2025-12-31 W=90d: future-only(leak if ignored)=0 stale(>W)=4256 admissible=4025 of 8281
+t0=2025-12-31 W=180d: future-only(leak if ignored)=0 stale(>W)=1453 admissible=6828 of 8281

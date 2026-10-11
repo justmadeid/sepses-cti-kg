@@ -1,0 +1,26 @@
+A transitive: CVEs with >=1 sector 304/352; median sectors/CVE 6; max 26
+   Government: 204/352 CVEs (58.0%)
+   Education: 115/352 CVEs (32.7%)
+   Finance: 182/352 CVEs (51.7%)
+   Technology: 256/352 CVEs (72.7%)
+B report-scoped: CVEs with >=1 sector 247/352; median sectors/CVE 2; max 14
+   Government: 138/352 CVEs (39.2%)
+   Education: 41/352 CVEs (11.6%)
+   Finance: 58/352 CVEs (16.5%)
+   Technology: 157/352 CVEs (44.6%)
+
+Lazarus: uses malware ['BeaverTail', 'BinMergeLoader', 'DreamLoaders', 'FrostyFerret', 'GolangGhost'] | targets CVE [] | techniques e.g. ['T1003', 'T1005', 'T1012'] | indicators->actor 210 | sectors ['Aerospace', 'Defense', 'Finance', 'Manufacturing', 'Technology']
+   malware BeaverTail: 91 indicators, e.g. [url:value = 'http://23.227.202.244:1224/client/14/144']
+   malware DreamLoaders: 6 indicators, e.g. [file:hashes.'SHA-256' = 'aefc12b500b58fbc09ebbf34fe64b34cb32a27513478f4769447280ad23af4d2
+
+Lazarus Group: uses malware ['BeaverTail', 'Comebacker', 'InvisibleFerret', 'LightlessCan', 'Tropidoor'] | targets CVE [] | techniques e.g. ['T1005', 'T1012', 'T1027'] | indicators->actor 22 | sectors ['Aerospace', 'Defense', 'Technology']
+   malware InvisibleFerret: 86 indicators, e.g. [url:value = 'http://23.227.202.244:1224/client/14/144']
+   malware Comebacker: 15 indicators, e.g. [file:hashes.'SHA-256' = 'ad9c5aca9977d04c73be579199a827049b6dd9840091ffe8e23acc05e1d4a657
+
+Lazarus Group (Famous Chollima division): uses malware [] | targets CVE [] | techniques e.g. ['T1016', 'T1082', 'T1090'] | indicators->actor 11 | sectors ['Finance', 'Technology']
+
+Lazarus Group, Kimsuky: uses malware ['BADCALL - S0245', 'BLINDINGCAN - S0520', 'HttpTroy', 'MailPassView', 'Quasar RAT'] | targets CVE ['CVE-2025-55182'] | techniques e.g. ['T1003', 'T1005', 'T1021.001'] | indicators->actor 9 | sectors []
+   malware Quasar RAT: 35 indicators, e.g. [file:hashes.'SHA-256' = '14a5edabc087617810f9ff2aa7a27d3642863be143f4be27ef91df5dd2c64c21
+   malware BADCALL - S0245: 9 indicators, e.g. [file:hashes.'SHA-256' = 'bc7bd27e94e24a301edb3d3e7fad982225ac59430fc476bda4e1459faa1c1647
+
+APT-C-26 (Lazarus): uses malware [] | targets CVE [] | techniques e.g. ['T1036', 'T1055', 'T1059'] | indicators->actor 0 | sectors ['Aerospace', 'Defense', 'Finance', 'Government', 'Technology']

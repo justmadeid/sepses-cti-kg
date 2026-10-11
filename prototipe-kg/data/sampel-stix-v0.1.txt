@@ -1,0 +1,13 @@
+Sumber: 8 file alienvault-split; CVE contoh: CVE-2025-8088, CVE-2025-6218, CVE-2025-64446
+SHA-256 sampel: 0d701c9acbba33f380eccefc2af29bb96636a9e4a8b3b14f30453f668d84fb0f
+Laporan: 7
+  2025-08-11  report--e2aa1939-eb63-5b0b-8f55-2726377e3515  Update WinRAR tools now: RomCom and others exploiting zero-day vulnerability
+  2025-08-20  report--864cb315-120d-51b6-9a43-ecd16534d97e  Paper Werewolf targets Russia with WinRAR zero-day vulnerability
+  2025-08-25  report--58831ead-4e47-5c77-a57a-09ba7662716c  WinRAR Directory Traversal & NTFS ADS Vulnerabilities (CVE-2025-6218 & CVE-2025-
+  2025-09-15  report--dd46a176-9348-52da-98ad-5240ed09f44a  August Vulnerabilities of Note
+  2025-10-23  report--8e069f1a-0c06-53d0-9c35-8f4f69704494  Bitter (APT-Q-37) uses diverse means to deliver new backdoor components
+  2025-10-28  report--fbfbdc70-b719-55a6-9fc7-298924b57480  Earth Entries alive and kicking
+  2025-11-25  report--ca176ef7-3b6d-5031-ad37-0528df5d84a8  Russian RomCom Utilizing SocGholish to Deliver Mythic Agent to U.S. Companies Su
+Objek per tipe: {"attack-pattern": 50, "identity": 11, "intrusion-set": 5, "location": 14, "malware": 15, "relationship": 837, "report": 7, "vulnerability": 23}
+Rekaman CVE List v5 disalin: 14 dari 23 CVE di sampel
+Entri KEV untuk CVE sampel: 18 (katalog 2026.08.27)

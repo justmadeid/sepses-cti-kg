@@ -1,0 +1,52 @@
+D1: 530079 objek, 986 laporan, 456585 relasi
+
+=== A. Atribut waktu relasi STIX
+  created relasi per bulan (5 terbanyak): [('2026-03', 456585)]
+  created relasi di 2026: 456585/456585 (100.0%)
+  rentang published laporan: 2025-02-05 .. 2025-12-30
+  laporan dengan created == published: 986/986 (100.0%)
+  relasi dalam laporan yang created-nya > 30 hari SESUDAH laporan pertama yang memuatnya: 456585/456585 (100.0%)
+  intrusion-set   created di 2026: 355/355 (100.0%)
+  malware         created di 2026: 1053/1053 (100.0%)
+  vulnerability   created di 2026: 230/352 (65.3%)
+  attack-pattern  created di 2026: 452/452 (100.0%)
+  indicator       created di 2026: 35114/35114 (100.0%)
+
+=== B. Relasi yang dirujuk lebih dari satu laporan
+  semua relasi                           dalam laporan  456585; >1 laporan 17753/456585 (3.9%); selisih laporan pertama-terakhir: median 5 hari, p90 97 hari, maks 319 hari
+  X targets CVE                          dalam laporan    8281; >1 laporan 951/8281 (11.5%); selisih laporan pertama-terakhir: median 33 hari, p90 142 hari, maks 239 hari
+  X targets sektor/lokasi                dalam laporan    6197; >1 laporan 705/6197 (11.4%); selisih laporan pertama-terakhir: median 17 hari, p90 162 hari, maks 256 hari
+  indicator indicates X                  dalam laporan  382343; >1 laporan 11566/382343 (3.0%); selisih laporan pertama-terakhir: median 3 hari, p90 49 hari, maks 232 hari
+  sebaran jumlah laporan per relasi: [(1, 438832), (2, 16089), (3, 1170), (4, 234), (5, 112), (6, 54), (7, 34), (8, 24)] ...
+
+=== C. Penerbit asli di balik konektor
+  pembuat laporan (created_by_ref): [('AlienVault', 985), ('?', 1)]
+  laporan dengan >=1 URL sumber asli (selain OTX): 970/986 (98.4%)
+  jumlah domain sumber asli berbeda: 192
+  15 domain terbanyak: [('asec.ahnlab.com', 48), ('unit42.paloaltonetworks.com', 47), ('blog.talosintelligence.com', 41), ('securelist.com', 41), ('seqrite.com', 36), ('trendmicro.com', 30), ('welivesecurity.com', 26), ('zscaler.com', 25), ('cyfirma.com', 23), ('cloud.google.com', 21), ('fortinet.com', 21), ('hunt.io', 19), ('recordedfuture.com', 19), ('huntress.com', 17), ('research.checkpoint.com', 16)]
+
+=== D. Varian nama aktor/malware (heuristik)
+  intrusion-set: 355 nama unik; nama gabungan (koma/&): 10/355 (2.8%); dengan external_id: 0/355 (0.0%)
+    klaster varian (nama satu termuat penuh di nama lain; indikatif, perlu cek manual): 11 klaster, 35 nama
+     - ['APT-C-26 (Lazarus)', 'APT-C-55 (Kimsuky)', 'FAMOUS CHOLLIMA', 'Kimsuky', 'Kimsuky (APT43)', 'Lazarus']
+     - ['UNC6040', 'UNC6040, UNC6240', 'UNC6040, UNC6395', 'UNC6395']
+     - ['APT-C-53 (Gamaredon)', 'Gamaredon', 'Gamaredon, Turla']
+     - ['Linen Typhoon', 'Linen Typhoon, Violet Typhoon, Storm-2603', 'Storm-2603']
+     - ['Paper Werewolf', 'RomCom', 'RomCom, Paper Werewolf']
+     - ['Russian APT', 'Russian Intelligence Services', 'Russian-speaking threat actor']
+  malware: 1053 nama unik; nama gabungan (koma/&): 0/1053 (0.0%); dengan external_id: 0/1053 (0.0%)
+    klaster varian (nama satu termuat penuh di nama lain; indikatif, perlu cek manual): 24 klaster, 67 nama
+     - ['Chihuahua Infostealer', 'Chihuahua Stealer', 'Infostealer', 'Odyssey', 'Odyssey Stealer', 'Odyssey infostealer']
+     - ['AMOS', 'AMOS Stealer', 'ATOMIC', 'Atomic MacOS Stealer (AMOS)', 'Atomic macOS Stealer']
+     - ['Android malware', 'Android.Backdoor.916.origin', 'Android/BankBot-YNRK', 'AppCare/Android.KidLogger', 'AppCare/Android.Manamgeri']
+     - ['LockBit', 'LockBit 3.0', 'LockBit 5.0', 'Lockbit Black']
+     - ['Mythic', 'Mythic - S0699', 'Mythic Agent', 'Mythic C2 agent']
+     - ['Chaos - S0220', 'Chaos RAT', 'Chaos-C++']
+
+=== E. Indicator (opsi B, CQ3b)
+  indicator: 35114 | dengan valid_until: 35114/35114 (100.0%) | revoked: 18906/35114 (53.8%)
+  CVE yang punya >=1 indicator lewat indicator->{malware,aktor}->CVE (global): 333/352 (94.6%)
+  CVE yang punya >=1 indicator dalam LAPORAN YANG SAMA: 318/352 (90.3%)
+  t = 2025-09-30: CVE dengan >=1 indicator berlaku (laporan sama; valid_from<=t<valid_until): tanpa syarat revoked 204/352 (58.0%); dengan revoked snapshot 2026 178/352 (50.6%)
+  t = 2025-12-31: CVE dengan >=1 indicator berlaku (laporan sama; valid_from<=t<valid_until): tanpa syarat revoked 307/352 (87.2%); dengan revoked snapshot 2026 289/352 (82.1%)
+  Catatan: status revoked adalah keadaan snapshot (2026), bukan keadaan per t; memakainya untuk t 2025 termasuk bocor dari masa depan kecuali riwayat versi tersedia.

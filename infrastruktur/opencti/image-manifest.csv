@@ -1,0 +1,14 @@
+# Manifest image OpenCTI (dibaca 2026-10-09 via docker image inspect; tanpa kredensial)
+service,repository,tag,platform,image_id,image_created
+opencti-connector-export-file-stix-1,opencti/connector-export-file-stix,latest,linux/amd64,sha256:82e4315d15a9,2026-08-28T10:43:04
+opencti-opencti-1,opencti/platform,latest,linux/arm64,sha256:6d392c28ca5a,2026-08-24T14:40:55
+opencti-elasticsearch-1,docker.elastic.co/elasticsearch/elasticsearch,8.19.4,linux/arm64,sha256:1aa60ed36cad,2025-09-16T22:22:49
+opencti-worker-3,opencti/worker,latest,linux/arm64,sha256:18e54d1efed6,2026-08-24T14:28:49
+opencti-connector-import-file-stix-1,opencti/connector-import-file-stix,latest,linux/amd64,sha256:307ef6543af6,2026-08-24T16:19:47
+opencti-connector-opencti-datasets-1,opencti/connector-opencti,latest,linux/amd64,sha256:5d2bab3cc0aa,2026-08-28T10:33:23
+opencti-connector-cisa-kev-1,opencti/connector-cisa-known-exploited-vulnerabilities,latest,linux/amd64,sha256:a14fef59155e,2026-08-28T10:43:07
+opencti-rabbitmq-1,rabbitmq,4.1-management,linux/arm64/v8,sha256:7bc911fb97e6,2026-08-21T17:25:37
+opencti-redis-1,redis,8.2-alpine,linux/arm64/v8,sha256:674a1a609e66,2026-08-18T16:58:59
+opencti-minio-1,minio/minio,latest,linux/arm64,sha256:8f08aee61480,2025-09-07T18:44:27
+opencti-connector-alienvault-1,opencti/connector-alienvault,latest,linux/amd64,sha256:c41c92ba218d,2026-08-24T16:18:29
+opencti-connector-cve-nvd-1,opencti/connector-cve,latest,linux/amd64,sha256:a68e586a3e71,2026-08-28T10:33:36

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A-box KG v0.1</title>
+<script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; background: #fafafa; color: #222; }
+  header { padding: 10px 16px; background: #fff; border-bottom: 1px solid #ddd; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  header h1 { font-size: 16px; margin: 0 12px 0 0; }
+  select { font-size: 14px; padding: 4px 6px; }
+  #info { font-size: 13px; color: #555; }
+  #net { width: 100%; height: calc(100vh - 92px); }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 12px; padding: 4px 16px; background: #fff; border-bottom: 1px solid #eee; }
+  .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 4px; border-radius: 2px; background: var(--c); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Prototipe KG v0.1: A-box sampel</h1>
+  <label>Waktu keputusan:
+    <select id="sc">
+      <option value="naif">Tanpa waktu (integrasi naif)</option>
+      <option value="2025-09-30|180">t = 30 Sep 2025, W = 180 hari</option>
+      <option value="2025-12-31|180">t = 31 Des 2025, W = 180 hari</option>
+      <option value="2025-12-31|90">t = 31 Des 2025, W = 90 hari</option>
+    </select>
+  </label>
+  <span id="info"></span>
+</header>
+<div class="legend" id="legend"></div>
+<div id="net"></div>
+<script id="kg-data" type="application/json">__DATA__</script>
+<script>
+let DATA;
+try { DATA = JSON.parse(document.getElementById("kg-data").textContent); }
+catch (e) {
+  document.getElementById("net").innerHTML = '<p style="padding:16px">Ini file <b>template</b> tanpa data. ' +
+    'Buka <code>hasil/visualisasi-abox-v0.1.html</code> (dibuat oleh <code>pipeline/visualize.py</code>).</p>';
+  throw e;
+}
+const COLORS = { aset: "#9e9e9e", organisasi: "#bdbdbd", cve: "#66bb6a", cwe: "#a5d6a7", cvss: "#c8e6c9",
+  kev: "#ffd54f", laporan: "#ffb74d", aktor: "#64b5f6", malware: "#90caf9", sektor: "#ce93d8" };
+document.getElementById("legend").innerHTML = Object.entries(COLORS)
+  .map(([k, c]) => `<span style="--c:${c}">${k}</span>`).join("");
+const nodes = new vis.DataSet(DATA.nodes.map(({ group, ...n }) => ({ ...n, kelompok: group, color: { background: COLORS[group], border: "#555" }, shape: "box", font: { size: 13 } })));
+const edges = new vis.DataSet(DATA.edges.map(e => ({ ...e, arrows: "to", font: { size: 10, align: "middle" }, color: "#888" })));
+new vis.Network(document.getElementById("net"), { nodes, edges },
+  { physics: { solver: "forceAtlas2Based", stabilization: { iterations: 300 } }, interaction: { hover: true } });
+
+function apply() {
+  const v = document.getElementById("sc").value;
+  let ok = () => true, label = "Semua laporan dipakai, termasuk yang terbit sesudah t.";
+  if (v !== "naif") {
+    const [t, w] = v.split("|");
+    const end = t + "T23:59:59", start = new Date(new Date(t).getTime() - w * 864e5).toISOString().slice(0, 10);
+    ok = e => !e.date || (e.label === "kevDateAdded" ? e.date <= end : e.date <= end && e.date >= start);
+    label = `Laporan berlaku: terbit ${start} s.d. ${t}. KEV tampil bila dateAdded <= t.`;
+  }
+  const visible = new Set();
+  edges.forEach(e => { const show = ok(e); edges.update({ id: e.id, hidden: !show }); if (show) { visible.add(e.from); visible.add(e.to); } });
+  const always = new Set(["aset", "organisasi", "cve", "cwe", "cvss"]);
+  nodes.forEach(n => nodes.update({ id: n.id, hidden: !(always.has(n.kelompok) || visible.has(n.id)) }));
+  const shownReports = nodes.get().filter(n => n.kelompok === "laporan" && !n.hidden).length;
+  document.getElementById("info").textContent = `${label} Laporan tampil: ${shownReports}.`;
+}
+document.getElementById("sc").addEventListener("change", apply);
+apply();
+</script>
+</body>
+</html>
