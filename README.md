@@ -1,4 +1,4 @@
-# JEJAK-VP KG — Integrasi CTI OpenCTI ke SEPSES Knowledge Graph
+# SEPSES-CTI KG — Integrasi CTI OpenCTI ke SEPSES Knowledge Graph
 
 Repositori teknis tesis S2 Ilmu Komputer (Kecerdasan Artifisial), Universitas Gadjah Mada.
 
@@ -76,6 +76,9 @@ sudah disertakan, sehingga langkah 2–5 bisa langsung dijalankan.
 - **CISA KEV**: katalog publik pemerintah AS.
 - **SEPSES / ICS-SEC KG**: kosakata dipakai ulang dengan merujuk namespace aslinya
   (`http://w3id.org/sepses/...`).
+
+Catatan nama: identitas lama "JEJAK-VP" (nama kerangka v1) masih muncul pada namespace sementara
+`http://example.org/jejak-vp/` dan nama dataset Fuseki `/jejak`; keduanya diganti pada prototipe v0.2.
 
 Repositori ini disinkronkan dari folder penelitian lokal dengan
 `research-v3/sinkron-ke-repo.sh`; ubahan kode dibuat di sana lalu disalin ke sini.

@@ -5,7 +5,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 # Akar data mentah (ekspor OpenCTI, CVE List v5, KEV). Hanya dibutuhkan langkah 1.
-ROOT="${JEJAK_DATA_ROOT:-$(cd ../.. && pwd)}"
+ROOT="${CTI_DATA_ROOT:-$(cd ../.. && pwd)}"
 PY=.venv/bin/python
 [ -x "$PY" ] || { python3 -m venv .venv && .venv/bin/pip install -q -r requirements.txt; }
 

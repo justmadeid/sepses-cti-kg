@@ -315,7 +315,7 @@ sah-waktu di langkah 4.
 ## `jalankan.sh`
 
 ```text
-ROOT = $JEJAK_DATA_ROOT atau dua folder di atas
+ROOT = $CTI_DATA_ROOT atau dua folder di atas
 bila ada data mentah  -> langkah 1, selain itu dilewati
 langkah 2, 3, 4, 5
 --fuseki: docker compose up (fuseki/), tunggu /$/ping, PUT TriG ke /jejak/data,
