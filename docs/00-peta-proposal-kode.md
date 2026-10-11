@@ -1,6 +1,6 @@
 # Peta Proposal ↔ Kode
 
-Nomor subbab, tabel, dan gambar merujuk ke draft proposal `v3-draft-13` (atau sesudahnya)
+Nomor subbab, tabel, dan gambar merujuk ke draft proposal `v3-draft-14` (atau sesudahnya)
 di [`../proposal/`](../proposal/). Arah sebaliknya (proposal menunjuk ke kode) ada di
 Lampiran D proposal.
 

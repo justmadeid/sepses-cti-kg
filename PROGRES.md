@@ -22,7 +22,7 @@ lengkap: [`progres/tracker.csv`](progres/tracker.csv) (`python3 progres/progress
   - 15,5% CVE 2025 yang disebut CTI hanya punya CVSS v4.0 (belum ada di kosakata SEPSES).
 - Keputusan lingkup *indicator* yang diusulkan (opsi B): dimodelkan tanpa *observable*,
   dipakai pada CQ3b. Menunggu konfirmasi pembimbing.
-- Draft proposal v3-draft-13: penyelarasan gambar T-box dengan file ontologi, CQ3b,
+- Draft proposal v3-draft-14: penyelarasan gambar T-box dengan file ontologi, CQ3b, Lampiran D (peta proposal ke kode),
   keputusan K14–K16.
 
 **Menunggu bimbingan 2 (16 Oktober 2026)**
