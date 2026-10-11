@@ -113,10 +113,11 @@ SELECT DISTINCT ?lap ?s ?sl ?terbit WHERE {{
 seen = {}
 for e in edges:
     seen.setdefault((e["from"], e["to"], e["label"]), e)
-edges = list(seen.values())
+# Urutan tetap agar file HTML sama di setiap run (diff Git bersih).
+edges = sorted(seen.values(), key=lambda e: (e["from"], e["to"], e["label"]))
 for i, e in enumerate(edges):
     e["id"] = i
-data = json.dumps({"nodes": list(nodes.values()), "edges": edges}, ensure_ascii=False)
+data = json.dumps({"nodes": sorted(nodes.values(), key=lambda n: n["id"]), "edges": edges}, ensure_ascii=False)
 html = (HERE / "pipeline/visualisasi-template.html").read_text().replace("__DATA__", data)
 (HERE / "hasil/visualisasi-abox-v0.1.html").write_text(html)
 print(f"{len(nodes)} simpul, {len(edges)} sisi -> hasil/visualisasi-abox-v0.1.html")
