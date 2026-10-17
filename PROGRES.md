@@ -3,6 +3,15 @@
 Catatan perkembangan konstruksi KG dan bahan proposal, terbaru di atas. Daftar tugas
 lengkap: [`progres/tracker.csv`](progres/tracker.csv) (`python3 progres/progress.py`).
 
+## 2026-10-17 — Laporan progres (bimbingan 2 ditunda)
+
+- Bimbingan 2 (16 Oktober 2026) ditunda; pembimbing meminta laporan progres tertulis.
+- Laporan: [`laporan/laporan-progres-2026-10-17.pdf`](laporan/laporan-progres-2026-10-17.pdf),
+  berisi progres sejak pertemuan 1, perbandingan penelitian lama (atribusi APT), v1, v2,
+  dan v3, alasan perubahan, rencana ke depan, serta 10 pertanyaan untuk pembimbing.
+- Dikonfirmasi: penelitian lama dan v3 memakai ekspor OpenCTI yang sama (986 laporan,
+  SHA-256 `ce71f16c…`).
+
 ## 2026-10-11 — Prototipe KG v0.1 dan konsolidasi
 
 **Dikerjakan**

@@ -44,6 +44,7 @@ Putaran pertama (v0.1) sudah dijalankan pada 7 laporan OpenCTI. Hasilnya ada di
 | [`data-checks/`](data-checks/) | Skrip *read-only* untuk mengukur realitas data OpenCTI, CVE, dan KEV (sumber angka di proposal), beserta keluarannya (`*.out.txt`) | [`docs/00-peta-proposal-kode.md`](docs/00-peta-proposal-kode.md) bagian C |
 | [`infrastruktur/opencti/`](infrastruktur/opencti/) | Konfigurasi Docker OpenCTI + konektor AlienVault yang dipakai mengumpulkan data, dan skrip pemecah *bundle* STIX | [`docs/01-alur-data.md`](docs/01-alur-data.md) |
 | [`proposal/`](proposal/) | Draft proposal terbaru (PDF) | — |
+| [`laporan/`](laporan/) | Laporan progres untuk pembimbing (PDF): progres, perbandingan versi penelitian, rencana, pertanyaan | — |
 | [`progres/`](progres/) | `tracker.csv` (daftar tugas) dan `progress.py` (ringkasan progres) | `python3 progres/progress.py` |
 | [`docs/`](docs/) | Dokumentasi: peta proposal↔kode, alur data, panduan kode, ontologi, kueri | — |
 
