@@ -27,9 +27,6 @@ use case dan CQ → taksonomi → kelas dan relasi (T-box) → pemetaan → KG (
 → kueri SPARQL → CQ terjawab? → bila belum: perbaiki ontologi/pemetaan (v0.x) dan ulangi
 ```
 
-Putaran pertama (v0.1) sudah dijalankan pada 7 laporan OpenCTI. Hasilnya ada di
-[`prototipe-kg/README.md`](prototipe-kg/README.md) dan [`PROGRES.md`](PROGRES.md).
-
 ## Menjalankan prototipe
 
 Prasyarat: Python 3.12. Docker hanya dibutuhkan untuk Fuseki.
