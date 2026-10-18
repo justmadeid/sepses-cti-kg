@@ -9,3 +9,10 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+docs/
+laporan/
+progres/
+proposal/
+
+PROGRES.md
